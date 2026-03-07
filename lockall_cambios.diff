@@ -1,0 +1,326 @@
+diff --git a/client/src/components/Footer.tsx b/client/src/components/Footer.tsx
+index 554c8638..695f5056 100644
+--- a/client/src/components/Footer.tsx
++++ b/client/src/components/Footer.tsx
+@@ -15,7 +15,7 @@ export default function Footer() {
+           <div className="lg:col-span-1">
+             <img src={ASSETS.logo} alt="LOCKALL" className="h-8 w-auto mb-5" />
+             <p className="text-[14px] leading-relaxed text-white/50 max-w-[280px]">
+-              Infraestructura tecnológica avanzada para la mitigación de riesgo en el financiamiento de dispositivos.
++              Soluciones avanzadas de mitigación de riesgo en el financiamiento de dispositivos.
+             </p>
+           </div>
+ 
+@@ -91,7 +91,7 @@ export default function Footer() {
+             © {new Date().getFullYear()} LOCKALL. Todos los derechos reservados.
+           </p>
+           <div className="flex items-center gap-1 text-[12px] text-white/30 font-heading">
+-            <span>Infraestructura global de protección financiera</span>
++            <span>Soluciones globales de protección financiera</span>
+             <ArrowUpRight size={12} />
+           </div>
+         </div>
+diff --git a/client/src/pages/About.tsx b/client/src/pages/About.tsx
+index 8cc63a52..ceafeaca 100644
+--- a/client/src/pages/About.tsx
++++ b/client/src/pages/About.tsx
+@@ -38,7 +38,7 @@ export default function About() {
+               Sobre LOCKALL
+             </h1>
+             <p className="text-[17px] leading-relaxed text-lockall-graphite max-w-[600px]">
+-              Una empresa multinacional dedicada a proporcionar infraestructura tecnológica de mitigación de riesgo para el sector financiero.
++              Una empresa multinacional dedicada a ofrecer soluciones de mitigación de riesgo para el sector financiero, respaldadas por tecnología especializada.
+             </p>
+           </div>
+         </div>
+@@ -64,10 +64,10 @@ export default function About() {
+                   Infraestructura Global para la Protección de Activos Financiados
+                 </h2>
+                 <p className="text-[16px] leading-relaxed text-lockall-graphite mb-5">
+-                  LOCKALL nació de la identificación de una necesidad estructural en el mercado financiero: la ausencia de herramientas tecnológicas especializadas para mitigar el riesgo inherente al financiamiento de dispositivos tecnológicos. Lo que comenzó como una solución técnica se ha convertido en una infraestructura integral que opera en más de 45 países.
++                  LOCKALL nació de la identificación de una necesidad real en el mercado financiero: la falta de soluciones especializadas para mitigar el riesgo en el financiamiento de dispositivos tecnológicos. Lo que comenzó como una iniciativa enfocada se ha convertido en una operación con presencia en más de 45 países.
+                 </p>
+                 <p className="text-[16px] leading-relaxed text-lockall-graphite mb-5">
+-                  Nuestra plataforma procesa millones de transacciones diarias, proporcionando a bancos, instituciones financieras y retailers las herramientas necesarias para proteger sus carteras de financiamiento de dispositivos de manera eficiente y conforme a la regulación local.
++                  A través de las soluciones que ofrecemos, se procesan millones de transacciones diarias, proporcionando a bancos, instituciones financieras y retailers las herramientas necesarias para proteger sus carteras de financiamiento de dispositivos de manera eficiente y conforme a la regulación local.
+                 </p>
+                 <p className="text-[16px] leading-relaxed text-lockall-graphite">
+                   Con equipos distribuidos en América Latina, Europa, Asia y África, mantenemos una operación continua que combina experiencia técnica con conocimiento regulatorio profundo en cada mercado donde operamos.
+@@ -109,12 +109,12 @@ export default function About() {
+               {
+                 icon: Target,
+                 title: "Misión",
+-                text: "Proporcionar a las instituciones financieras la infraestructura tecnológica más avanzada para la mitigación de riesgo en el financiamiento de dispositivos, contribuyendo a la expansión responsable del crédito tecnológico.",
++                text: "Proporcionar a las instituciones financieras las soluciones más avanzadas de mitigación de riesgo en el financiamiento de dispositivos, contribuyendo a la expansión responsable del crédito tecnológico.",
+               },
+               {
+                 icon: Eye,
+                 title: "Visión",
+-                text: "Ser el estándar global de referencia en protección de activos tecnológicos financiados, reconocido por las principales instituciones financieras como un componente esencial de su infraestructura de gestión de riesgo.",
++                text: "Ser el referente global en protección de activos tecnológicos financiados, reconocido por las principales instituciones financieras como un aliado estratégico esencial en su gestión de riesgo.",
+               },
+               {
+                 icon: Compass,
+diff --git a/client/src/pages/Contact.tsx b/client/src/pages/Contact.tsx
+index e3de3d39..35e41281 100644
+--- a/client/src/pages/Contact.tsx
++++ b/client/src/pages/Contact.tsx
+@@ -86,7 +86,7 @@ export default function Contact() {
+               Contacto Corporativo
+             </h1>
+             <p className="text-[17px] leading-relaxed text-lockall-graphite max-w-[600px]">
+-              Complete el formulario a continuación y un especialista de nuestro equipo se pondrá en contacto para evaluar cómo LOCKALL puede integrarse con su operación.
++              Complete el formulario a continuación y un especialista de nuestro equipo se pondrá en contacto para evaluar cómo las soluciones de LOCKALL pueden integrarse con su operación.
+             </p>
+           </div>
+         </div>
+diff --git a/client/src/pages/Home.tsx b/client/src/pages/Home.tsx
+index cf103d07..57cf5c70 100644
+--- a/client/src/pages/Home.tsx
++++ b/client/src/pages/Home.tsx
+@@ -89,7 +89,7 @@ function HeroSection() {
+             }`}
+             style={{ transitionDelay: "500ms" }}
+           >
+-            La Solución Más Avanzada para la{" "}
++            Soluciones Avanzadas de{" "}
+             <span className="text-lockall-cyan">Mitigación de Riesgo</span> en
+             Financiamiento de Dispositivos
+           </h1>
+@@ -103,8 +103,8 @@ function HeroSection() {
+             }`}
+             style={{ transitionDelay: "700ms" }}
+           >
+-            Proteja teléfonos móviles y electrodomésticos financiados mediante
+-            una infraestructura tecnológica avanzada, diseñada específicamente
++            Proteja teléfonos móviles y electrodomésticos financiados con
++            soluciones respaldadas por tecnología de clase mundial, diseñadas
+             para instituciones financieras.
+           </p>
+ 
+@@ -289,22 +289,22 @@ function SolutionSection() {
+                 Un Nuevo Estándar en Protección de Activos Digitales Financiados
+               </h2>
+               <p className="text-[16px] leading-relaxed text-lockall-graphite mb-6">
+-                LOCKALL ha desarrollado una plataforma integral de mitigación de
+-                riesgo que opera a nivel de dispositivo, proporcionando a las
+-                instituciones financieras un mecanismo de protección sin
+-                precedentes sobre los activos tecnológicos que financian.
++                LOCKALL ofrece soluciones de mitigación de riesgo que operan
++                a nivel de dispositivo, proporcionando a las instituciones
++                financieras un mecanismo de protección sin precedentes sobre
++                los activos tecnológicos que financian.
+               </p>
+               <p className="text-[16px] leading-relaxed text-lockall-graphite mb-8">
+-                Nuestra infraestructura combina seguridad a nivel de hardware,
+-                inteligencia de datos y cumplimiento regulatorio en una solución
++                Nuestras soluciones combinan seguridad a nivel de hardware,
++                inteligencia de datos y cumplimiento regulatorio en una oferta
+                 unificada que se integra directamente con los sistemas de gestión
+                 de cartera existentes.
+               </p>
+ 
+               <div className="p-5 bg-lockall-pearl rounded border border-border">
+                 <p className="text-[15px] font-heading font-semibold text-lockall-navy">
+-                  No vendemos software. Ofrecemos soluciones estratégicas de
+-                  protección financiera.
++                  No somos un sistema. Somos el aliado estratégico que
++                  protege su cartera de financiamiento.
+                 </p>
+               </div>
+ 
+@@ -357,7 +357,7 @@ function SecurityLayersSection() {
+     {
+       icon: Radio,
+       title: "Transmisión Segura de Comandos",
+-      desc: "Canal de comunicación cifrado de extremo a extremo entre la plataforma central y cada dispositivo, con autenticación multifactor y protocolos de redundancia.",
++      desc: "Canal de comunicación cifrado de extremo a extremo entre los servidores centrales y cada dispositivo, con autenticación multifactor y protocolos de redundancia.",
+     },
+     {
+       icon: Brain,
+@@ -397,9 +397,9 @@ function SecurityLayersSection() {
+               6 Capas de Protección Integradas
+             </h2>
+             <p className="text-[16px] leading-relaxed text-white/60">
+-              Cada capa opera de forma independiente y complementaria, creando un
+-              sistema de defensa en profundidad que protege los activos
+-              financiados desde múltiples vectores.
++              Cada capa opera de forma independiente y complementaria,
++              conformando una estrategia de defensa en profundidad que protege
++              los activos financiados desde múltiples vectores.
+             </p>
+           </div>
+         </SectionReveal>
+@@ -455,7 +455,7 @@ function WhoWeServeSection() {
+     {
+       icon: Wallet,
+       title: "Programas BNPL",
+-      desc: "Plataformas de compra ahora, paga después que requieren infraestructura de protección para dispositivos financiados.",
++      desc: "Plataformas de compra ahora, paga después que requieren soluciones de protección para dispositivos financiados.",
+     },
+   ];
+ 
+@@ -523,9 +523,10 @@ function GlobalReachSection() {
+                 Infraestructura Global, Cumplimiento Local
+               </h2>
+               <p className="text-[16px] leading-relaxed text-lockall-graphite mb-6">
+-                LOCKALL opera en más de 45 países, con infraestructura
+-                distribuida que garantiza baja latencia y alta disponibilidad.
+-                Nuestra plataforma se adapta a los marcos regulatorios de cada
++                LOCKALL tiene presencia en más de 45 países, con soluciones
++                respaldadas por infraestructura distribuida que garantiza baja
++                latencia y alta disponibilidad. Nos adaptamos a los marcos
++                regulatorios de cada
+                 jurisdicción, asegurando cumplimiento normativo sin comprometer
+                 la eficiencia operativa.
+               </p>
+@@ -582,7 +583,7 @@ function VideoCTASection() {
+               Conozca LOCKALL
+             </span>
+             <h2 className="font-display font-bold text-[clamp(2rem,4vw,2.75rem)] leading-[1.1] tracking-tight text-lockall-navy mb-5">
+-              Vea Nuestra Plataforma en Acción
++              Vea Nuestras Soluciones en Acción
+             </h2>
+           </div>
+         </SectionReveal>
+@@ -615,7 +616,8 @@ function FinalCTASection() {
+           </h2>
+           <p className="text-[16px] text-white/80 max-w-[520px] mx-auto mb-8">
+             Agende una demostración privada con nuestro equipo de especialistas
+-            en riesgo y conozca cómo LOCKALL puede integrarse con su operación.
++            y conozca cómo las soluciones de LOCKALL pueden integrarse con
++            su operación.
+           </p>
+           <div className="flex flex-wrap items-center justify-center gap-4">
+             <Link
+diff --git a/client/src/pages/HowItWorks.tsx b/client/src/pages/HowItWorks.tsx
+index 394aae95..cbcc7f9b 100644
+--- a/client/src/pages/HowItWorks.tsx
++++ b/client/src/pages/HowItWorks.tsx
+@@ -13,7 +13,7 @@ const steps = [
+     title: "Integración y Configuración",
+     subtitle: "Despliegue adaptado a su infraestructura",
+     description:
+-      "El proceso inicia con la integración de LOCKALL en su ecosistema tecnológico existente. Nuestro equipo de ingeniería trabaja directamente con su departamento de TI para configurar la conexión API, establecer las políticas de protección y definir los flujos de trabajo automatizados.",
++      "El proceso inicia con la integración de las soluciones de LOCKALL en su ecosistema tecnológico existente. Nuestro equipo de ingeniería trabaja directamente con su departamento de TI para configurar la conexión API, establecer las políticas de protección y definir los flujos de trabajo automatizados.",
+     details: [
+       "Integración API con su sistema de gestión de cartera",
+       "Configuración de políticas de protección personalizadas",
+@@ -27,7 +27,7 @@ const steps = [
+     title: "Activación en Dispositivos",
+     subtitle: "Protección desde el primer día de financiamiento",
+     description:
+-      "Una vez integrada la plataforma, cada dispositivo financiado se registra automáticamente en el sistema LOCKALL. El mecanismo de protección se activa de forma transparente durante el proceso de configuración inicial del dispositivo, sin afectar la experiencia del usuario final.",
++      "Una vez integradas las soluciones, cada dispositivo financiado se registra automáticamente. El mecanismo de protección se activa de forma transparente durante el proceso de configuración inicial del dispositivo, sin afectar la experiencia del usuario final.",
+     details: [
+       "Registro automático al momento del financiamiento",
+       "Activación transparente para el usuario final",
+@@ -77,7 +77,7 @@ export default function HowItWorks() {
+               Proceso
+             </span>
+             <h1 className="font-display font-bold text-[clamp(2.5rem,5vw,3.25rem)] leading-[1.05] tracking-tight text-lockall-navy mb-6">
+-              Cómo Funciona LOCKALL
++              Cómo Funcionan Nuestras Soluciones
+             </h1>
+             <p className="text-[17px] leading-relaxed text-lockall-graphite max-w-[600px]">
+               Un proceso estructurado en cuatro fases que garantiza una implementación eficiente y resultados medibles desde las primeras semanas de operación.
+diff --git a/client/src/pages/Resources.tsx b/client/src/pages/Resources.tsx
+index 890242d6..96f396e4 100644
+--- a/client/src/pages/Resources.tsx
++++ b/client/src/pages/Resources.tsx
+@@ -12,7 +12,7 @@ const resources = [
+   {
+     icon: FileText,
+     type: "Resumen Ejecutivo",
+-    title: "LOCKALL: Plataforma de Mitigación de Riesgo",
++    title: "LOCKALL: Soluciones de Mitigación de Riesgo",
+     description: "Documento de alto nivel que presenta la propuesta de valor de LOCKALL, casos de uso principales y métricas de impacto para comités ejecutivos.",
+     format: "PDF",
+     pages: "12 páginas",
+@@ -21,7 +21,7 @@ const resources = [
+     icon: BookOpen,
+     type: "Documento Técnico",
+     title: "Arquitectura de Seguridad de 6 Capas",
+-    description: "Descripción técnica detallada de la arquitectura de seguridad de LOCKALL, incluyendo protocolos de cifrado, mecanismos de protección y estándares de cumplimiento.",
++    description: "Descripción técnica detallada de la arquitectura de seguridad integrada en las soluciones de LOCKALL, incluyendo protocolos de cifrado, mecanismos de protección y estándares de cumplimiento.",
+     format: "PDF",
+     pages: "28 páginas",
+   },
+diff --git a/client/src/pages/Security.tsx b/client/src/pages/Security.tsx
+index 8ccf0950..7ecd2708 100644
+--- a/client/src/pages/Security.tsx
++++ b/client/src/pages/Security.tsx
+@@ -25,7 +25,7 @@ const securityFeatures = [
+   {
+     icon: Lock,
+     title: "Cifrado de extremo a extremo",
+-    desc: "Toda la comunicación entre la plataforma central y los dispositivos protegidos utiliza cifrado AES-256 con intercambio de claves mediante protocolo Diffie-Hellman.",
++    desc: "Toda la comunicación entre los servidores centrales y los dispositivos protegidos utiliza cifrado AES-256 con intercambio de claves mediante protocolo Diffie-Hellman.",
+   },
+   {
+     icon: Server,
+@@ -101,7 +101,7 @@ export default function Security() {
+               Seguridad Empresarial y Cumplimiento Normativo
+             </h1>
+             <p className="text-[17px] leading-relaxed text-lockall-graphite max-w-[600px]">
+-              La seguridad y el cumplimiento regulatorio son pilares fundamentales de nuestra operación. Cada componente de la plataforma LOCKALL ha sido diseñado con estos principios como requisitos no negociables.
++              La seguridad y el cumplimiento regulatorio son pilares fundamentales de nuestra operación. Cada componente de las soluciones que ofrecemos ha sido diseñado con estos principios como requisitos no negociables.
+             </p>
+           </div>
+         </div>
+@@ -119,7 +119,7 @@ export default function Security() {
+                 Seguridad Empresarial
+               </h2>
+               <p className="text-[16px] leading-relaxed text-lockall-graphite">
+-                Nuestra infraestructura de seguridad ha sido diseñada para cumplir con los estándares más exigentes del sector financiero. Cada capa de protección opera de forma independiente, creando un sistema de defensa en profundidad.
++                Las soluciones de LOCKALL han sido diseñadas para cumplir con los estándares más exigentes del sector financiero. Cada capa de protección opera de forma independiente, conformando una estrategia de defensa en profundidad.
+               </p>
+             </div>
+           </SectionReveal>
+diff --git a/client/src/pages/Solutions.tsx b/client/src/pages/Solutions.tsx
+index c57306ef..b4df3aad 100644
+--- a/client/src/pages/Solutions.tsx
++++ b/client/src/pages/Solutions.tsx
+@@ -32,13 +32,13 @@ function PageHero() {
+       <div className="container">
+         <div className="max-w-[720px]">
+           <span className="text-[12px] font-heading font-semibold tracking-widest uppercase text-lockall-cyan mb-4 block">
+-            Plataforma
++            Nuestras Soluciones
+           </span>
+           <h1 className="font-display font-bold text-[clamp(2.5rem,5vw,3.25rem)] leading-[1.05] tracking-tight text-lockall-navy mb-6">
+             Soluciones de Protección Financiera de Nivel Empresarial
+           </h1>
+           <p className="text-[17px] leading-relaxed text-lockall-graphite max-w-[600px]">
+-            Tres productos integrados que cubren el ciclo completo de protección de activos financiados: desde la prevención hasta la inteligencia predictiva.
++            Tres soluciones integradas que cubren el ciclo completo de protección de activos financiados: desde la prevención hasta la inteligencia predictiva.
+           </p>
+         </div>
+       </div>
+@@ -107,7 +107,7 @@ export default function Solutions() {
+         tagColor="text-lockall-cyan"
+         name="LOCKALL Shield™"
+         subtitle="Protección integral a nivel de dispositivo"
+-        description="LOCKALL Shield™ es la capa fundamental de protección que se integra directamente con el dispositivo financiado. Opera de forma silenciosa y transparente para el usuario final, activándose únicamente cuando las condiciones de la cuenta lo requieren."
++        description="LOCKALL Shield™ es nuestra solución de protección fundamental. Integra tecnología especializada directamente en el dispositivo financiado, operando de forma silenciosa y transparente para el usuario final, activándose únicamente cuando las condiciones de la cuenta lo requieren."
+         capabilities={[
+           { icon: Shield, title: "Protección persistente", desc: "Mecanismo de protección que permanece activo incluso después de un restablecimiento de fábrica o cambio de SIM." },
+           { icon: Fingerprint, title: "Identificación única", desc: "Cada dispositivo recibe un identificador criptográfico único vinculado a la cuenta de financiamiento." },
+@@ -123,7 +123,7 @@ export default function Solutions() {
+         tagColor="text-lockall-orange"
+         name="LOCKALL Control™"
+         subtitle="Centro de operaciones para la gestión de cartera"
+-        description="LOCKALL Control™ proporciona a las instituciones financieras un panel de control centralizado para gestionar toda su cartera de dispositivos protegidos. Desde la activación inicial hasta la resolución de cuentas, cada acción queda registrada y auditable."
++        description="LOCKALL Control™ pone a disposición de las instituciones financieras un panel de control centralizado para gestionar toda su cartera de dispositivos protegidos. Desde la activación inicial hasta la resolución de cuentas, cada acción queda registrada y auditable."
+         capabilities={[
+           { icon: Radio, title: "Comunicación en tiempo real", desc: "Canal cifrado de comunicación bidireccional con cada dispositivo de la cartera." },
+           { icon: Zap, title: "Ejecución inmediata", desc: "Comandos de protección que se ejecutan en segundos, independientemente de la ubicación del dispositivo." },
+@@ -140,7 +140,7 @@ export default function Solutions() {
+         tagColor="text-lockall-cyan"
+         name="LOCKALL Insight™"
+         subtitle="Inteligencia predictiva para la toma de decisiones"
+-        description="LOCKALL Insight™ transforma los datos operativos en inteligencia accionable. Mediante modelos de machine learning y análisis de patrones de comportamiento, proporciona a los equipos de riesgo las herramientas necesarias para anticipar y prevenir pérdidas."
++        description="LOCKALL Insight™ convierte los datos operativos en inteligencia accionable. Mediante modelos de machine learning y análisis de patrones de comportamiento, brinda a los equipos de riesgo las herramientas necesarias para anticipar y prevenir pérdidas."
+         capabilities={[
+           { icon: BarChart3, title: "Dashboard ejecutivo", desc: "Visualización en tiempo real del estado de la cartera con métricas clave de rendimiento y riesgo." },
+           { icon: TrendingUp, title: "Predicción de riesgo", desc: "Modelos predictivos que identifican cuentas con alta probabilidad de incumplimiento antes de que ocurra." },
