@@ -1,17 +1,18 @@
 import nodemailer from "nodemailer";
 import axios from "axios";
 
-function json(statusCode, body) {
-  return {
-    statusCode,
-    headers: {
-      "Content-Type": "application/json",
-      "Access-Control-Allow-Origin": "*",
-      "Access-Control-Allow-Headers": "Content-Type, Authorization",
-      "Access-Control-Allow-Methods": "POST, OPTIONS",
-    },
-    body: JSON.stringify(body),
-  };
+const CORS_HEADERS = {
+  "Access-Control-Allow-Origin": "*",
+  "Access-Control-Allow-Headers": "Content-Type, Authorization",
+  "Access-Control-Allow-Methods": "POST, OPTIONS",
+  "Content-Type": "application/json",
+};
+
+function json(body, status = 200) {
+  return new Response(JSON.stringify(body), {
+    status,
+    headers: CORS_HEADERS,
+  });
 }
 
 function escapeHtml(text) {
@@ -142,45 +143,33 @@ function formatEmailHtml(data) {
       <head>
         <meta charset="UTF-8" />
         <title>New Corporate Contact Request — LOCKALL</title>
-        <style>
-          body { font-family: Arial, sans-serif; color: #333; background: #f3f4f6; margin: 0; padding: 20px; }
-          .container { max-width: 700px; margin: 0 auto; background: #fff; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 18px rgba(0,0,0,.08); }
-          .header { background-color: #0ea5e9; color: white; padding: 24px; }
-          .content { padding: 24px; }
-          table { width: 100%; border-collapse: collapse; margin-top: 12px; }
-          th, td { padding: 12px; border: 1px solid #d1d5db; text-align: left; vertical-align: top; }
-          .label { font-weight: bold; background-color: #f9fafb; width: 220px; }
-          .footer { font-size: 12px; color: #6b7280; padding: 20px 24px 24px; border-top: 1px solid #e5e7eb; }
-          .message-box { white-space: pre-wrap; line-height: 1.6; }
-        </style>
       </head>
-      <body>
-        <div class="container">
-          <div class="header">
-            <h1>New Corporate Contact Request</h1>
-            <p>LOCKALL - Contact Form Submission</p>
+      <body style="font-family: Arial, sans-serif; color: #333; background: #f3f4f6; margin: 0; padding: 20px;">
+        <div style="max-width: 700px; margin: 0 auto; background: #fff; border-radius: 10px; overflow: hidden;">
+          <div style="background-color: #0ea5e9; color: white; padding: 24px;">
+            <h1 style="margin: 0 0 6px 0;">New Corporate Contact Request</h1>
+            <p style="margin: 0;">LOCKALL - Contact Form Submission</p>
           </div>
 
-          <div class="content">
+          <div style="padding: 24px;">
             <p>A new corporate contact request has been received from the LOCKALL website.</p>
 
-            <table>
-              <tr><th class="label">Field</th><th>Value</th></tr>
-              <tr><td class="label">Institution</td><td>${escaped.institution}</td></tr>
-              <tr><td class="label">Country</td><td>${escaped.country}</td></tr>
-              <tr><td class="label">Institution Type</td><td>${escaped.institutionType}</td></tr>
-              <tr><td class="label">Monthly Volume</td><td>${escaped.volume}</td></tr>
-              <tr><td class="label">Device Type</td><td>${escaped.deviceType}</td></tr>
-              <tr><td class="label">Role</td><td>${escaped.role}</td></tr>
-              <tr><td class="label">Corporate Email</td><td>${escaped.email}</td></tr>
-              <tr><td class="label">Phone</td><td>${escaped.phone}</td></tr>
-              <tr><td class="label">Message</td><td class="message-box">${escaped.message}</td></tr>
+            <table style="width: 100%; border-collapse: collapse; margin-top: 12px;">
+              <tr><th style="padding: 12px; border: 1px solid #d1d5db; text-align:left;">Field</th><th style="padding: 12px; border: 1px solid #d1d5db; text-align:left;">Value</th></tr>
+              <tr><td style="padding: 12px; border: 1px solid #d1d5db;"><strong>Institution</strong></td><td style="padding: 12px; border: 1px solid #d1d5db;">${escaped.institution}</td></tr>
+              <tr><td style="padding: 12px; border: 1px solid #d1d5db;"><strong>Country</strong></td><td style="padding: 12px; border: 1px solid #d1d5db;">${escaped.country}</td></tr>
+              <tr><td style="padding: 12px; border: 1px solid #d1d5db;"><strong>Institution Type</strong></td><td style="padding: 12px; border: 1px solid #d1d5db;">${escaped.institutionType}</td></tr>
+              <tr><td style="padding: 12px; border: 1px solid #d1d5db;"><strong>Monthly Volume</strong></td><td style="padding: 12px; border: 1px solid #d1d5db;">${escaped.volume}</td></tr>
+              <tr><td style="padding: 12px; border: 1px solid #d1d5db;"><strong>Device Type</strong></td><td style="padding: 12px; border: 1px solid #d1d5db;">${escaped.deviceType}</td></tr>
+              <tr><td style="padding: 12px; border: 1px solid #d1d5db;"><strong>Role</strong></td><td style="padding: 12px; border: 1px solid #d1d5db;">${escaped.role}</td></tr>
+              <tr><td style="padding: 12px; border: 1px solid #d1d5db;"><strong>Corporate Email</strong></td><td style="padding: 12px; border: 1px solid #d1d5db;">${escaped.email}</td></tr>
+              <tr><td style="padding: 12px; border: 1px solid #d1d5db;"><strong>Phone</strong></td><td style="padding: 12px; border: 1px solid #d1d5db;">${escaped.phone}</td></tr>
+              <tr><td style="padding: 12px; border: 1px solid #d1d5db;"><strong>Message</strong></td><td style="padding: 12px; border: 1px solid #d1d5db; white-space: pre-wrap;">${escaped.message}</td></tr>
             </table>
-          </div>
 
-          <div class="footer">
-            <div>This email was sent from the LOCKALL contact form.</div>
-            <div>Timestamp: ${new Date().toISOString()}</div>
+            <p style="margin-top:20px; font-size:12px; color:#6b7280;">
+              Timestamp: ${new Date().toISOString()}
+            </p>
           </div>
         </div>
       </body>
@@ -206,17 +195,20 @@ Timestamp: ${new Date().toISOString()}
   `.trim();
 }
 
-export default async (req) => {
+export default async (req, context) => {
   if (req.method === "OPTIONS") {
-    return json(200, { ok: true });
+    return new Response(null, {
+      status: 204,
+      headers: CORS_HEADERS,
+    });
   }
 
   if (req.method !== "POST") {
-    return json(405, { ok: false, message: "Method not allowed" });
+    return json({ ok: false, message: "Method not allowed" }, 405);
   }
 
   try {
-    const body = JSON.parse(req.body || "{}");
+    const body = await req.json();
 
     const isProduction = process.env.NODE_ENV === "production";
     const skipRecaptcha = process.env.SKIP_RECAPTCHA === "true" && !isProduction;
@@ -225,20 +217,14 @@ export default async (req) => {
 
     const validation = validateFormData(body);
     if (!validation.valid) {
-      return json(400, {
-        ok: false,
-        message: validation.error,
-      });
+      return json({ ok: false, message: validation.error }, 400);
     }
 
     if (!skipRecaptcha) {
       const recaptchaResult = await verifyRecaptcha(recaptchaToken);
 
       if (!recaptchaResult.valid) {
-        return json(403, {
-          ok: false,
-          message: recaptchaResult.error,
-        });
+        return json({ ok: false, message: recaptchaResult.error }, 403);
       }
     }
 
@@ -255,15 +241,12 @@ export default async (req) => {
 
     console.log("Message ID:", info.messageId);
 
-    return json(200, {
-      ok: true,
-      message: "Contact form submitted successfully",
-    });
+    return json({ ok: true, message: "Contact form submitted successfully" }, 200);
   } catch (error) {
     console.error("Error processing contact form:", error);
-    return json(500, {
-      ok: false,
-      message: error.message || "Error processing contact form",
-    });
+    return json(
+      { ok: false, message: error.message || "Error processing contact form" },
+      
+    );
   }
 };
