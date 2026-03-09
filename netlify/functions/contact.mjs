@@ -37,8 +37,7 @@ function validateFormData(data) {
     "message",
   ];
 
-  const isProduction = process.env.NODE_ENV === "production";
-  const skipRecaptcha = process.env.SKIP_RECAPTCHA === "true" && !isProduction;
+  const skipRecaptcha = process.env.SKIP_RECAPTCHA === "true";
 
   if (!skipRecaptcha) {
     requiredFields.push("recaptchaToken");
@@ -68,7 +67,7 @@ async function verifyRecaptcha(token) {
           secret: process.env.RECAPTCHA_SECRET_KEY,
           response: token,
         },
-        timeout: 10000,
+        timeout: 15000,
       }
     );
 
@@ -107,6 +106,13 @@ function ensureSmtpEnv() {
 function createTransporter() {
   ensureSmtpEnv();
 
+  console.log("SMTP CONFIG", {
+    host: process.env.SMTP_HOST,
+    port: process.env.SMTP_PORT,
+    secure: process.env.SMTP_SECURE,
+    user: process.env.SMTP_USER,
+  });
+
   return nodemailer.createTransport({
     host: process.env.SMTP_HOST,
     port: Number(process.env.SMTP_PORT || 465),
@@ -115,12 +121,13 @@ function createTransporter() {
       user: process.env.SMTP_USER,
       pass: process.env.SMTP_PASS,
     },
-    pool: true,
-    maxConnections: 1,
-    maxMessages: 20,
-    connectionTimeout: 10000,
-    greetingTimeout: 10000,
-    socketTimeout: 10000,
+    connectionTimeout: 30000,
+    greetingTimeout: 30000,
+    socketTimeout: 30000,
+    tls: {
+      rejectUnauthorized: true,
+      minVersion: "TLSv1.2",
+    },
   });
 }
 
@@ -155,16 +162,46 @@ function formatEmailHtml(data) {
             <p>A new corporate contact request has been received from the LOCKALL website.</p>
 
             <table style="width: 100%; border-collapse: collapse; margin-top: 12px;">
-              <tr><th style="padding: 12px; border: 1px solid #d1d5db; text-align:left;">Field</th><th style="padding: 12px; border: 1px solid #d1d5db; text-align:left;">Value</th></tr>
-              <tr><td style="padding: 12px; border: 1px solid #d1d5db;"><strong>Institution</strong></td><td style="padding: 12px; border: 1px solid #d1d5db;">${escaped.institution}</td></tr>
-              <tr><td style="padding: 12px; border: 1px solid #d1d5db;"><strong>Country</strong></td><td style="padding: 12px; border: 1px solid #d1d5db;">${escaped.country}</td></tr>
-              <tr><td style="padding: 12px; border: 1px solid #d1d5db;"><strong>Institution Type</strong></td><td style="padding: 12px; border: 1px solid #d1d5db;">${escaped.institutionType}</td></tr>
-              <tr><td style="padding: 12px; border: 1px solid #d1d5db;"><strong>Monthly Volume</strong></td><td style="padding: 12px; border: 1px solid #d1d5db;">${escaped.volume}</td></tr>
-              <tr><td style="padding: 12px; border: 1px solid #d1d5db;"><strong>Device Type</strong></td><td style="padding: 12px; border: 1px solid #d1d5db;">${escaped.deviceType}</td></tr>
-              <tr><td style="padding: 12px; border: 1px solid #d1d5db;"><strong>Role</strong></td><td style="padding: 12px; border: 1px solid #d1d5db;">${escaped.role}</td></tr>
-              <tr><td style="padding: 12px; border: 1px solid #d1d5db;"><strong>Corporate Email</strong></td><td style="padding: 12px; border: 1px solid #d1d5db;">${escaped.email}</td></tr>
-              <tr><td style="padding: 12px; border: 1px solid #d1d5db;"><strong>Phone</strong></td><td style="padding: 12px; border: 1px solid #d1d5db;">${escaped.phone}</td></tr>
-              <tr><td style="padding: 12px; border: 1px solid #d1d5db;"><strong>Message</strong></td><td style="padding: 12px; border: 1px solid #d1d5db; white-space: pre-wrap;">${escaped.message}</td></tr>
+              <tr>
+                <th style="padding: 12px; border: 1px solid #d1d5db; text-align:left;">Field</th>
+                <th style="padding: 12px; border: 1px solid #d1d5db; text-align:left;">Value</th>
+              </tr>
+              <tr>
+                <td style="padding: 12px; border: 1px solid #d1d5db;"><strong>Institution</strong></td>
+                <td style="padding: 12px; border: 1px solid #d1d5db;">${escaped.institution}</td>
+              </tr>
+              <tr>
+                <td style="padding: 12px; border: 1px solid #d1d5db;"><strong>Country</strong></td>
+                <td style="padding: 12px; border: 1px solid #d1d5db;">${escaped.country}</td>
+              </tr>
+              <tr>
+                <td style="padding: 12px; border: 1px solid #d1d5db;"><strong>Institution Type</strong></td>
+                <td style="padding: 12px; border: 1px solid #d1d5db;">${escaped.institutionType}</td>
+              </tr>
+              <tr>
+                <td style="padding: 12px; border: 1px solid #d1d5db;"><strong>Monthly Volume</strong></td>
+                <td style="padding: 12px; border: 1px solid #d1d5db;">${escaped.volume}</td>
+              </tr>
+              <tr>
+                <td style="padding: 12px; border: 1px solid #d1d5db;"><strong>Device Type</strong></td>
+                <td style="padding: 12px; border: 1px solid #d1d5db;">${escaped.deviceType}</td>
+              </tr>
+              <tr>
+                <td style="padding: 12px; border: 1px solid #d1d5db;"><strong>Role</strong></td>
+                <td style="padding: 12px; border: 1px solid #d1d5db;">${escaped.role}</td>
+              </tr>
+              <tr>
+                <td style="padding: 12px; border: 1px solid #d1d5db;"><strong>Corporate Email</strong></td>
+                <td style="padding: 12px; border: 1px solid #d1d5db;">${escaped.email}</td>
+              </tr>
+              <tr>
+                <td style="padding: 12px; border: 1px solid #d1d5db;"><strong>Phone</strong></td>
+                <td style="padding: 12px; border: 1px solid #d1d5db;">${escaped.phone}</td>
+              </tr>
+              <tr>
+                <td style="padding: 12px; border: 1px solid #d1d5db;"><strong>Message</strong></td>
+                <td style="padding: 12px; border: 1px solid #d1d5db; white-space: pre-wrap;">${escaped.message}</td>
+              </tr>
             </table>
 
             <p style="margin-top:20px; font-size:12px; color:#6b7280;">
@@ -209,9 +246,7 @@ export default async (req, context) => {
 
   try {
     const body = await req.json();
-
-    const isProduction = process.env.NODE_ENV === "production";
-    const skipRecaptcha = process.env.SKIP_RECAPTCHA === "true" && !isProduction;
+    const skipRecaptcha = process.env.SKIP_RECAPTCHA === "true";
 
     const { recaptchaToken, ...formData } = body;
 
@@ -226,8 +261,11 @@ export default async (req, context) => {
       if (!recaptchaResult.valid) {
         return json({ ok: false, message: recaptchaResult.error }, 403);
       }
+    } else {
+      console.log("SKIP_RECAPTCHA activo: validación omitida");
     }
 
+    console.log("Intentando enviar correo...");
     const transporter = createTransporter();
 
     const info = await transporter.sendMail({
@@ -239,14 +277,22 @@ export default async (req, context) => {
       text: formatEmailText(formData),
     });
 
+    console.log("Correo enviado correctamente");
     console.log("Message ID:", info.messageId);
 
-    return json({ ok: true, message: "Contact form submitted successfully" }, 200);
+    return json(
+      { ok: true, message: "Contact form submitted successfully" },
+      200
+    );
   } catch (error) {
     console.error("Error processing contact form:", error);
+
     return json(
-      { ok: false, message: error.message || "Error processing contact form" },
-      
+      {
+        ok: false,
+        message: error.message || "Error processing contact form",
+      },
+      500
     );
   }
 };
