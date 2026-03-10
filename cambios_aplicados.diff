@@ -1,0 +1,60 @@
+diff --git a/client/src/pages/Home.tsx b/client/src/pages/Home.tsx
+index 57cf5c7..945bdf6 100644
+--- a/client/src/pages/Home.tsx
++++ b/client/src/pages/Home.tsx
+@@ -64,7 +64,8 @@ function HeroSection() {
+ 
+       {/* Content */}
+       <div className="container relative z-10 pt-24 pb-16">
+-        <div className="max-w-[780px]">
++        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center max-w-full">
++        <div className="max-w-[600px]">
+           {/* Tag — slides in from left */}
+           <div
+             className={`inline-flex items-center gap-2 px-4 py-1.5 mb-8 rounded-full border border-lockall-cyan/30 bg-lockall-cyan/10 backdrop-blur-sm transition-all duration-700 ease-out ${
+@@ -150,6 +151,23 @@ function HeroSection() {
+             </div>
+           </div>
+         </div>
++        
++        {/* Right column - Video visual element */}
++        <div className="hidden lg:flex items-center justify-center">
++          <div className="relative w-full max-w-[500px] aspect-square rounded-2xl overflow-hidden shadow-2xl">
++            <video
++              autoPlay
++              muted
++              loop
++              playsInline
++              className="w-full h-full object-cover"
++            >
++              <source src={ASSETS.video} type="video/mp4" />
++            </video>
++            <div className="absolute inset-0 bg-gradient-to-t from-lockall-navy/40 to-transparent" />
++          </div>
++        </div>
++        </div>
+       </div>
+ 
+       {/* Bottom gradient fade to next section */}
+@@ -591,6 +609,8 @@ function VideoCTASection() {
+         <SectionReveal delay={200}>
+           <div className="max-w-4xl mx-auto rounded-xl overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.1)] bg-lockall-navy">
+             <video
++              autoPlay
++              muted
+               controls
+               className="w-full aspect-video"
+               poster={ASSETS.heroBg}
+diff --git a/client/src/pages/NotFound.tsx b/client/src/pages/NotFound.tsx
+index 79a450d..aa817ef 100644
+--- a/client/src/pages/NotFound.tsx
++++ b/client/src/pages/NotFound.tsx
+@@ -36,7 +36,7 @@ export default function NotFound() {
+           <div className="flex flex-col sm:flex-row gap-3 justify-center">
+             <Button
+               onClick={handleGoHome}
+-              className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2.5 rounded-lg transition-all duration-200 shadow-md hover:shadow-lg"
++              className="bg-lockall-cyan hover:bg-lockall-cyan-dark text-lockall-navy px-6 py-2.5 rounded-lg transition-all duration-200 shadow-md hover:shadow-lg"
+             >
+               <Home className="w-4 h-4 mr-2" />
+               Go Home
