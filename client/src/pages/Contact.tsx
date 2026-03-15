@@ -714,7 +714,7 @@ export default function Contact() {
                             Teléfono
                           </div>
                           <div className="text-[14px] text-lockall-graphite">
-                            +1 (809) 123-4567
+                            +1 809-895-0273
                           </div>
                         </div>
                       </div>
