@@ -44,8 +44,8 @@
   --font-heading: "Plus Jakarta Sans", system-ui, sans-serif;
   --font-body: "DM Sans", system-ui, sans-serif;
   --color-lockall-cyan: oklch(0.72 0.15 220);
-  --color-lockall-cyan-light: oklch(0.85 0.1 220);
-  --color-lockall-cyan-dark: oklch(0.55 0.15 220);
+  --color-lockall-cyan-light: oklch(0.72 0.15 220);
+  --color-lockall-cyan-dark: oklch(0.72 0.15 220);
   --color-lockall-orange: oklch(0.75 0.16 70);
   --color-lockall-orange-light: oklch(0.85 0.12 70);
   --color-lockall-navy: oklch(0.2 0.03 260);
@@ -102,7 +102,7 @@
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.18 0.02 260);
 
-  --primary: oklch(0.68 0.18 236);
+  --primary: #27C1F2;
   --primary-foreground: oklch(0.99 0 0);
 
   --secondary: oklch(0.97 0.003 90);
@@ -120,13 +120,13 @@
   --border: oklch(0.92 0.004 260);
   --input: oklch(0.92 0.004 260);
 
-  --ring: oklch(0.68 0.18 236);
+  --ring: #27C1F2;
 
   /* Charts */
 
-  --chart-1: oklch(0.72 0.18 236);
-  --chart-2: oklch(0.68 0.18 236);
-  --chart-3: oklch(0.55 0.18 236);
+  --chart-1: #27C1F2;
+  --chart-2: #27C1F2;
+  --chart-3: #27C1F2;
   --chart-4: oklch(0.75 0.16 70);
   --chart-5: oklch(0.4 0.01 260);
 
@@ -135,14 +135,14 @@
   --sidebar: oklch(0.99 0.002 90);
   --sidebar-foreground: oklch(0.18 0.02 260);
 
-  --sidebar-primary: oklch(0.68 0.18 236);
+  --sidebar-primary: #27C1F2;
   --sidebar-primary-foreground: oklch(0.99 0 0);
 
   --sidebar-accent: oklch(0.97 0.003 90);
   --sidebar-accent-foreground: oklch(0.18 0.02 260);
 
   --sidebar-border: oklch(0.92 0.004 260);
-  --sidebar-ring: oklch(0.68 0.18 236);
+  --sidebar-ring: #27C1F2;
 }
 
 @layer base {
@@ -230,7 +230,7 @@
   .exec-card {
     background: white;
     border: 1px solid oklch(0.92 0.004 260);
-    border-top: 3px solid oklch(0.72 0.15 220);
+    border-top: 3px solid #27C1F2;
     transition: all 0.3s ease;
   }
   .exec-card:hover {
